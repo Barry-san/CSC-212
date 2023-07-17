@@ -1,11 +1,19 @@
-// program to calculate the standard deviation of four scores
-//  visit the following link to for how to calcuate standard deviation
-// https://www.google.com/search?q=how+to+calculate+standard+deviation&rlz=1C5CHFA_enNG1016NG1016&oq=how+to+calculate+standard+deviation&aqs=chrome..69i57j0i512l9.19925j0j7&sourceid=chrome&ie=UTF-8
-
 #include <iostream>
 #include <cmath>
 using namespace std;
 
+double get_standard_deviation(double first_score, double second_score, double third_score, double fourth_score);
+
+// Test case
+// Inputs are 3, 5, 7, 2
+// expected output is 1.92029
+int main()
+{
+    cout << get_standard_deviation(3, 5, 7, 2) << endl;
+    return 0;
+}
+
+// Function definition
 double get_standard_deviation(double first_score, double second_score, double third_score, double fourth_score)
 {
     const int number_of_points = 4;
@@ -18,13 +26,9 @@ double get_standard_deviation(double first_score, double second_score, double th
     double fourth_distance = pow(mean - fourth_score, 2);
 
     sum_of_distance_of_entries_from_mean = first_distance + second_distance + third_distance + fourth_distance;
-    double deviation = sum_of_distance_of_entries_from_mean / number_of_points;
 
-    return sqrt(deviation);
-}
-
-int main(int argc, char const *argv[])
-{
-    cout << get_standard_deviation(3, 5, 7, 2) << endl;
-    return 0;
+    // standard deviation is the square root of variance
+    double variance = sum_of_distance_of_entries_from_mean / number_of_points;
+    // return the square root of the variance as our final outout
+    return sqrt(variance);
 }

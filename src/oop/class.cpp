@@ -1,4 +1,4 @@
-// a class in c++ is an extension of the struct daat type and adds the feature for function definition
+// a class in c++ is an extension of the struct data type and adds the feature for function definition
 #include <iostream>
 
 class point
@@ -8,10 +8,7 @@ public:
     int y;
 
     // scope resolution operator is used to tie a function to a class in which it is defined.
-    void display()
-    {
-        std::cout << "points (" << this->x << ", " << this->y << ")" << std::endl;
-    }
+    void display();
 
     // constructor are member functions that are used for initailizing variables of objects when they are created.
     // they bear the same name with the class and have no return type, not even void.
@@ -47,11 +44,15 @@ point::point(point &obj)
     y = obj.y;
 }
 
+void point::display()
+{
+    std::cout << "points (" << x << ", " << y << ")" << std::endl;
+}
+
 int main()
 {
 
     point a(60, 50);
-
     point b;
     b.display();
     a.display();
